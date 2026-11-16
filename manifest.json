@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "JustBid Enhanced",
+  "version": "0.1.0",
+  "description": "Flags when someone you know is bidding on a JustBid item: red warning badge and the bidder's masked ID replaced with their name.",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.justbid.com/item/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "JustBid Enhanced — edit friends list",
+    "default_popup": "options.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "justbid-enhanced@local",
+      "strict_min_version": "115.0"
+    }
+  }
+}

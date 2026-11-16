@@ -1,0 +1,32 @@
+# --- Extension signing keys / secrets (never commit) ---
+*.pem
+key.pem
+*.p12
+web-ext-config.js
+.env
+.env.*
+amo-credentials*
+
+# --- Build / packaging output ---
+dist/
+build/
+web-ext-artifacts/
+*.zip
+*.crx
+*.xpi
+
+# --- Node (if tooling like web-ext is added) ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# --- Editor / OS cruft ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
