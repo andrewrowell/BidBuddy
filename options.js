@@ -1,4 +1,4 @@
-// JustBid Enhanced - options page logic
+// BidBuddy - options page logic
 "use strict";
 
 const STORE_KEY = "friends";

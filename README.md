@@ -1,4 +1,4 @@
-# JustBid Enhanced
+# BidBuddy
 
 A small Chrome + Firefox (Manifest V3) extension that flags when someone you
 know is bidding on a [JustBid](https://www.justbid.com) item.
@@ -52,7 +52,7 @@ masks.
 1. Go to `about:debugging#/runtime/this-firefox`.
 2. Click **Load Temporary Add-on…**.
 3. Select the `manifest.json` file in this folder.
-4. Use **Extensions → JustBid Enhanced → Preferences** (or the toolbar icon) to
+4. Use **Extensions → BidBuddy → Preferences** (or the toolbar icon) to
    edit the friends list.
 
 A temporary add-on is removed when Firefox restarts. For a permanent install the
@@ -63,7 +63,18 @@ extension needs to be signed by Mozilla (`web-ext sign` / AMO).
 - `manifest.json` — MV3 manifest, cross-browser.
 - `content.js` — scans the bid history, renames matches, shows the badge.
 - `content.css` — badge and name styles.
+- `storage.js` — shared persistent storage (sync, with local fallback).
 - `options.html` / `options.js` — the friends-list editor.
+- `icons/` — the BidBuddy icons (16/32/48/128, plus 512 for store listings).
+- `PRIVACY.md` — privacy policy. `STORE.md` — store submission notes.
+- `package.json` / `web-ext-config.cjs` — lint/build/sign with Mozilla's
+  `web-ext`. `store/` holds listing assets (screenshots) and is not packaged.
+
+## Publishing
+
+See `STORE.md` for the store listing copy, packaging, and signing steps. In
+short: `npm install` then `npm run build` produces the upload zip (Chrome Web
+Store), and `npm run sign:firefox` produces a signed `.xpi` (Firefox).
 
 ## Limitations / ideas for later
 

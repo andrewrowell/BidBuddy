@@ -26,6 +26,7 @@ pnpm-debug.log*
 # --- Editor / OS cruft ---
 .vscode/
 .idea/
+.junie/
 *.swp
 *.swo
 .DS_Store

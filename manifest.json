@@ -1,9 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "JustBid Enhanced",
+  "name": "BidBuddy",
   "version": "0.1.0",
-  "description": "Flags when someone you know is bidding on a JustBid item: red warning badge and the bidder's masked ID replaced with their name.",
+  "description": "Flags when someone you know is bidding on a JustBid item: a red warning badge plus the bidder's masked ID shown as their name. Not affiliated with JustBid.",
   "permissions": ["storage"],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
   "content_scripts": [
     {
       "matches": ["https://www.justbid.com/item/*"],
@@ -17,13 +23,22 @@
     "open_in_tab": true
   },
   "action": {
-    "default_title": "JustBid Enhanced — edit friends list",
-    "default_popup": "options.html"
+    "default_title": "BidBuddy — edit friends list",
+    "default_popup": "options.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "justbid-enhanced@local",
-      "strict_min_version": "115.0"
+      "id": "bidbuddy@local",
+      "strict_min_version": "115.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   }
 }

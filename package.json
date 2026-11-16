@@ -1,0 +1,15 @@
+{
+  "name": "bidbuddy",
+  "version": "0.1.0",
+  "description": "Browser extension that flags when someone you know is bidding on a JustBid item. Not affiliated with JustBid.",
+  "private": true,
+  "scripts": {
+    "lint": "web-ext lint",
+    "start": "web-ext run",
+    "build": "web-ext build",
+    "sign:firefox": "web-ext sign --channel=unlisted"
+  },
+  "devDependencies": {
+    "web-ext": "^8.3.0"
+  }
+}

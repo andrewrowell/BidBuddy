@@ -1,4 +1,4 @@
-// JustBid Enhanced - content script
+// BidBuddy - content script
 // Scans a JustBid item page's bid history for bidder IDs that match your
 // configured friends list, replaces the masked ID with the friend's name, and
 // shows a red warning badge at the top of the item when a friend is bidding.
@@ -84,16 +84,6 @@
     });
   }
 
-  function escapeHtml(s) {
-    return s.replace(/[&<>"']/g, (c) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;",
-    }[c]));
-  }
-
   // Choose where to place the badge: directly above the Bid History section
   // (full width, next to the evidence), falling back to the item title, then
   // the top of <main>.
@@ -149,15 +139,34 @@
       names.length === 1
         ? "Someone you know may be bidding on this item"
         : "People you know may be bidding on this item";
-    badge.innerHTML =
-      '<span class="jbe-badge__icon" aria-hidden="true">⚠</span>' +
-      '<span class="jbe-badge__text"><strong>' +
-      label +
-      "</strong>: " +
-      names.map(escapeHtml).join(", ") +
-      '. <span class="jbe-badge__verify">JustBid only shows partial bidder IDs, so there is a chance this is another ' +
-        'bidder. Check with this person to verify they are bidding on this item.</span>' +
-      "</span>";
+
+    // Build with DOM nodes (not innerHTML) so names are inserted as text and
+    // can never be interpreted as markup.
+    badge.textContent = "";
+
+    const icon = document.createElement("span");
+    icon.className = "jbe-badge__icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = "⚠";
+
+    const text = document.createElement("span");
+    text.className = "jbe-badge__text";
+
+    const strong = document.createElement("strong");
+    strong.textContent = label;
+    text.appendChild(strong);
+    text.appendChild(document.createTextNode(": " + names.join(", ") + ". "));
+
+    const verify = document.createElement("span");
+    verify.className = "jbe-badge__verify";
+    verify.textContent =
+      "JustBid only shows partial bidder IDs, so there is a chance this is " +
+      "another bidder. Check with this person to verify they are bidding on " +
+      "this item.";
+    text.appendChild(verify);
+
+    badge.appendChild(icon);
+    badge.appendChild(text);
   }
 
   function scan() {
@@ -189,7 +198,7 @@
       span.textContent = match.name;
       span.classList.add(NAME_CLASS);
       span.title =
-        "JustBid Enhanced: possible match for " +
+        "BidBuddy: possible match for " +
         match.name +
         " (bidder " +
         current +

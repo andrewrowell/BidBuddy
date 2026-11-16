@@ -1,4 +1,4 @@
-// JustBid Enhanced - shared persistent storage
+// BidBuddy - shared persistent storage
 //
 // Loaded in BOTH the content script and the options page so they read/write the
 // same store.
