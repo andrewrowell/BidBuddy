@@ -65,9 +65,10 @@ extension needs to be signed by Mozilla (`web-ext sign` / AMO).
 - `content.css` — badge and name styles.
 - `storage.js` — shared persistent storage (sync, with local fallback).
 - `options.html` / `options.js` — the friends-list editor.
+- `LICENSE` — full GNU AGPL v3 text.
 - `icons/` — the BidBuddy icons (16/32/48/128, plus 512 for store listings).
 - `PRIVACY.md` — privacy policy. `STORE.md` — store submission notes.
-- `package.json` / `web-ext-config.cjs` — lint/build/sign with Mozilla's
+- `package.json` / `web-ext-config.mjs` — lint/build/sign with Mozilla's
   `web-ext`. `store/` holds listing assets (screenshots) and is not packaged.
 
 ## Publishing
@@ -84,3 +85,13 @@ Store), and `npm run sign:firefox` produces a signed `.xpi` (Firefox).
 - Only checks the bids on the item page. Doesn't show in search lists.
 - Use `chrome.storage.sync`, so the list syncs with your browser
   profile.
+
+## License
+
+Licensed under the GNU Affero General Public License v3.0 (`AGPL-3.0-or-later`).
+See [LICENSE](LICENSE) for the full text.
+
+You may use, modify, and redistribute this code, including commercially, as long
+as you keep it under the AGPL: anyone you distribute it to — or who interacts
+with a modified version over a network — must be able to get the complete
+corresponding source. It cannot be folded into closed-source software.

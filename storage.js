@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 Andrew Rowell
+//
 // BidBuddy - shared persistent storage
 //
 // Loaded in BOTH the content script and the options page so they read/write the

@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 Andrew Rowell
+//
 // BidBuddy - content script
 // Scans a JustBid item page's bid history for bidder IDs that match your
 // configured friends list, replaces the masked ID with the friend's name, and
