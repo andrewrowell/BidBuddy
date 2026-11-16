@@ -22,19 +22,13 @@
 
   let autoOpenEnabled = true;
 
-  // storage.get returns a promise in both Chrome (MV3) and Firefox; we use the
-  // callback form so it works the same in both.
+  // JBEStorage (storage.js) reads from storage.sync with a storage.local
+  // fallback, and returns a promise in both Chrome and Firefox.
   function loadSettings() {
-    return new Promise((resolve) => {
-      try {
-        chrome.storage.sync.get([STORE_KEY, AUTO_OPEN_KEY], (res) => {
-          const list = (res && res[STORE_KEY]) || [];
-          const auto = !res || res[AUTO_OPEN_KEY] !== false; // default on
-          resolve({ friends: Array.isArray(list) ? list : [], autoOpen: auto });
-        });
-      } catch (e) {
-        resolve({ friends: [], autoOpen: true });
-      }
+    return JBEStorage.get([STORE_KEY, AUTO_OPEN_KEY]).then((res) => {
+      const list = (res && res[STORE_KEY]) || [];
+      const auto = !res || res[AUTO_OPEN_KEY] !== false; // default on
+      return { friends: Array.isArray(list) ? list : [], autoOpen: auto };
     });
   }
 
@@ -239,9 +233,10 @@
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
   }
 
-  // React to edits made in the options page without needing a reload.
+  // React to edits made in the options page without needing a reload. We watch
+  // both sync and local since the wrapper may use either.
   chrome.storage.onChanged.addListener((changes, area) => {
-    if (area !== "sync") return;
+    if (area !== "sync" && area !== "local") return;
     if (changes[STORE_KEY]) {
       restoreAll();
       friends = buildFriends(changes[STORE_KEY].newValue || []);

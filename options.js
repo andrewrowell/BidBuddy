@@ -66,7 +66,7 @@ function flash() {
 }
 
 function load() {
-  chrome.storage.sync.get([STORE_KEY, AUTO_OPEN_KEY], (res) => {
+  JBEStorage.get([STORE_KEY, AUTO_OPEN_KEY]).then((res) => {
     const list = (res && res[STORE_KEY]) || [];
     render(Array.isArray(list) ? list : []);
     autoOpenEl.checked = !res || res[AUTO_OPEN_KEY] !== false; // default on
@@ -75,8 +75,7 @@ function load() {
 
 function save() {
   const list = collect();
-  chrome.storage.sync.set(
-    { [STORE_KEY]: list, [AUTO_OPEN_KEY]: autoOpenEl.checked },
+  JBEStorage.set({ [STORE_KEY]: list, [AUTO_OPEN_KEY]: autoOpenEl.checked }).then(
     () => {
       render(list.length ? list : []);
       flash();
