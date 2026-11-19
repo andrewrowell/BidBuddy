@@ -3,10 +3,10 @@
 A small Chrome + Firefox (Manifest V3) extension that flags when someone you
 know is bidding on a [JustBid](https://www.justbid.com) item.
 
-## Install in Chrome
+## Install
 
-Install BidBuddy from the
-[Chrome Web Store](https://chromewebstore.google.com/detail/dmdfkdjekmhaabpfldiffflfhkapngpn).
+- **Chrome:** [Chrome Web Store](https://chromewebstore.google.com/detail/dmdfkdjekmhaabpfldiffflfhkapngpn)
+- **Firefox:** [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/bidbuddy/)
 
 ## How it works
 
