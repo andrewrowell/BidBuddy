@@ -5,8 +5,8 @@ know is bidding on a [JustBid](https://www.justbid.com) item.
 
 ## Install
 
-- **Chrome:** [Chrome Web Store](https://chromewebstore.google.com/detail/dmdfkdjekmhaabpfldiffflfhkapngpn)
-- **Firefox:** [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/bidbuddy/)
+<a href="https://addons.mozilla.org/en-US/firefox/addon/bidbuddy/"><img src="store/badges/get-the-addon-firefox.png" alt="Get the add-on for Firefox" height="58"></a>
+<a href="https://chromewebstore.google.com/detail/dmdfkdjekmhaabpfldiffflfhkapngpn"><img src="store/badges/chrome-web-store.png" alt="Available in the Chrome Web Store" height="58"></a>
 
 ## How it works
 
